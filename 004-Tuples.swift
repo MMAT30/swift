@@ -18,5 +18,4 @@ print(fullName3!)
 
 
 // interpolation
-
 print("Full name is \(fullName3!.first) \(fullName3!.last)")

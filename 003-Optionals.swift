@@ -16,6 +16,17 @@ if let num1 {
     print("num1 is nil")
 }
 
+// guard if let
+func check(val: Int?) {
+    guard let value = val else {
+        return
+        
+    }
+
+    print(value)
+}
+check(val: opt1)
+
 // if let with condition
 if let num1 = num1, num1 > 5 {
     count = num1

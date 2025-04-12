@@ -3,6 +3,11 @@ struct FullName {
     var first: String
     var last: String
 
+    // computed properties
+    var fullName: String {
+        return first + last;
+    }
+
     // overloading the init method to accept no parameters
     init() {
         self.first = "Taylor"
@@ -71,7 +76,7 @@ struct FullNameComputed {
     var first: String
     var last: String
     var fullName: String {
-        return "\(first) \(last)"
+        return "\(self.first) \(self.last)"
     }
     var account = Account()
 }
@@ -149,3 +154,37 @@ genStruct2.items.append("Structs")
 // accessing struct properties
 genStruct1.description()
 genStruct2.description()
+
+// mutating struct
+struct Mutating {
+    var name: String
+
+    mutating func makeAnonymous() {
+        name = "anonymous"
+    }
+}
+
+// creating struct
+var m1 = Mutating(name: "bob")
+
+// calling mutating function
+m1.makeAnonymous()
+
+
+// lazy properties in structs
+struct Bank {
+    var name: String
+    private var accountNumber: Int
+    // only created once the account is accessed the first time
+    lazy var account: Account = Account()
+
+    init(name: String) {
+        self.name = name
+        self.accountNumber = 1234
+    }
+}
+
+var b1 = Bank(name: "peter")
+
+// accessing the account so the account struct instance is created
+print(b1.account)
